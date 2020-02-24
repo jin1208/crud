@@ -1,48 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 
+function boardList(props) {
+    return(
+        <tr>
+        <td>{props.id}</td>
+        <td>{props.image}</td>
+        <td>{props.name}</td>
+        <td>{props.birthday}</td>
+        <td>{props.gender}</td>
+        <td>{props.job}</td>
+        <td>{props.createdDate}</td>
+        <td>{props.isDeleted}</td>
+        <td>{props.userId}</td>
+    </tr>
+    )
+}
 
-class boardList extends Component { 
-    
-    state = {
-        list : []
-    };
-
-    call_api = () => {
-        return fetch('/customer')
-                .then(res => res.json())
-                .then(data => this.setState({ list : data }))
-                .catch(err => {
-                    console.error(err);
-                })
-    }
-
-    componentDidMount() {
-        this.call_api();
-    }
-
-    render() { 
-        const data = this.state;
-        return (
-        <div> 
-            <h1>옆자리 극혐에서 살짝 혐 정도로 바뀜</h1>
-            {
-            data.list.map(data => { return (
-                <li>
-                    <ul>{data.id} </ul>
-                    <ul>{data.image}</ul>
-                    <ul>{data.name}</ul>
-                    <ul>{data.birthday}</ul>
-                    <ul>{data.gender}</ul>
-                    <ul>{data.job}</ul>
-                    <ul>{data.createdDate}</ul>
-                </li>
-                )
-            })
-            } 
-            <a href="www.옆자리혐.com"><h2>ㅗ</h2></a>
-        </div>
-        ); 
-    
-    }
-
-} export default boardList;
+export default boardList;
