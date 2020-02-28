@@ -1,20 +1,17 @@
 import React, {Component} from 'react';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
-import boardList from './view/board/boardList';
-import boardMain from './view/board/boardMain';
+import Container from './view/doodle/container/container';
+import doodleMain from './view/doodle/axiosExample/doodleMain';
+import SearchContainer from './view/doodle/reduxExample/SearchContainer';
 
 class App extends Component {
   render() {
       return (
         <Router>
           <div>
-            <Route exact path="/" component={boardMain}/>
-            <Route exact path="/list" component={boardList}/>
-            {/* <Route exact path="/App2" component={App2}/>
-            <Route exact path="/App3" component={App3}/>
-            <Route exact path="/App4" component={App4}/>
-            <Route exact path="/App5" component={App5}/>
-            <Route exact path="/App6" component={App6}/> */}
+            <Route exact path="/" component={Container}/>
+            <Route exact path="/Doodle/search" component={SearchContainer}/>
+            <Route exact path="/Doodle/axiosExample" component={doodleMain}/>
           </div>
         </Router>
       );

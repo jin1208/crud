@@ -2,8 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+//import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('react'));
+import {Provider} from 'react-redux';
+import store from './store/storeIndex';
 
-serviceWorker.unregister();
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>, 
+document.getElementById('react')
+);
+
+//serviceWorker.unregister();

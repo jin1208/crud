@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-class boardWrite extends React.Component {
+class doodleWrite extends React.Component {
     state = {
         file: {}
     };
@@ -32,7 +32,7 @@ class boardWrite extends React.Component {
                 }
                 axios.post('/add', formData, config)
                 .then((res) => {
-                    console.log("axios Success : " +res)
+                    console.log("axios Success : " + res)
                 }).catch((err) => {
                     console.error("axios Error : " + err)
                 });
@@ -40,6 +40,7 @@ class boardWrite extends React.Component {
 
             
             render() {
+                console.log(this.state);
                 return (
                 <form onSubmit={this.handleSubmit}>
                 <h1>고객 추가</h1>
@@ -53,4 +54,5 @@ class boardWrite extends React.Component {
                 )
             }
 }
-export default boardWrite
+
+export default doodleWrite;

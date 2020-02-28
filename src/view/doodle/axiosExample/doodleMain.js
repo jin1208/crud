@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
-import BoardList from './boardList';
-import BoardWrite from './boardWrite';
+import DoodleList from './doodleList';
+import DoodleWrite from './doodleWrite';
 
-
-class boardMain extends Component { 
+class doodleMain extends Component { 
     
     state = { list : [] };
+
+    stateRefresh = () => {
+        this.setState({
+            list : []
+        })
+        this.callApi();
+      }
 
     callApi = () => {
         return fetch('/customer')
@@ -24,11 +30,11 @@ class boardMain extends Component {
         const data = this.state;
         return (
         <div> 
-            <h1>BoardList</h1>
+            <h1>DoodleList</h1>
             {
             data.list.map(row => {
                 return (
-                    <BoardList 
+                    <DoodleList 
                     id={row.id} 
                     image={row.image} 
                     name={row.name} 
@@ -38,15 +44,16 @@ class boardMain extends Component {
                     createdDate={row.createdDate}
                     isDeleted={row.isDeleted}
                     userId={row.userId}
+                    stateRefresh={this.stateRefresh} 
                     />
-                ) 
-            })
-            } 
+                    ) 
+                })
+            }
             <a href="/list"><h2>ㅗ</h2></a>
-            <BoardWrite />
+            <DoodleWrite />
         </div>
         ); 
     
     }
 
-} export default boardMain;
+} export default doodleMain;

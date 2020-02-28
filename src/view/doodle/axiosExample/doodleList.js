@@ -1,6 +1,7 @@
 import React from 'react';
+import DoodleDelete from './doodleDelete';
 
-function boardList(props) {
+function doodleList(props) {
     return(
         <tr>
         <td>{props.id}</td>
@@ -12,8 +13,9 @@ function boardList(props) {
         <td>{props.createdDate}</td>
         <td>{props.isDeleted}</td>
         <td>{props.userId}</td>
+        <DoodleDelete id={props.id} stateRefresh={props.stateRefresh} /> 
     </tr>
     )
 }
 
-export default boardList;
+export default doodleList;
