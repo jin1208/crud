@@ -1,23 +1,21 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import { Link } from 'react-router-dom';
  
-import Search from './Search';
-import SearchResult from './SearchResult';
+import Search from '../component/Search';
+import SearchResult from '../component/SearchResult';
  
 import * as actions from '../../../store/actions';
  
 class SearchContainer extends Component {
   constructor(props){
     super(props);
-    this.state = {
-      //name: '' // input에 입력되는 value
-    }
+    this.state = {}
   }
  
   // arrow function으로 작성하면 bind(this) 할 필요없다 
   onChanageInput = (e) => {
     this.setState({
-      //name: e.target.value
       [e.target.name]: e.target.value
     })
   };
@@ -36,6 +34,17 @@ class SearchContainer extends Component {
             data={this.props.data}
           />
         }
+        <ul>
+            <li>
+              <Link to="/Doodle/axios">axiosExample</Link>
+            </li>
+            <li>
+              <Link to="/Doodle/search">reduxExample</Link>
+            </li>
+            <li>
+              <Link to="/">mainExample</Link>
+            </li>
+        </ul>
       </div>
     )
   }

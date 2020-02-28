@@ -4,14 +4,6 @@ const SearchResult = (props) => {
   const viewItems = (data) => {
     console.log('searchresult : ' + data
     );
-    // if(!data.data){
-    //   console.log('data = ' + data);
-    //   return 'please search'
-    // } else {
-    //   return <div>
-    //     {data.data}
-    //   </div>
-    // }
     if(!data.data){
       console.log('data = ' + data);
       return 'please search'

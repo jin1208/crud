@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import DoodleList from './doodleList';
-import DoodleWrite from './doodleWrite';
+import { Link } from 'react-router-dom';
+import AxiosList from '../component/axiosList';
+import AxiosWrite from '../component/axiosWrite';
 
 class doodleMain extends Component { 
     
@@ -14,7 +15,7 @@ class doodleMain extends Component {
       }
 
     callApi = () => {
-        return fetch('/customer')
+        return fetch('/list')
                 .then(res => res.json())
                 .then(data => this.setState({ list : data }))
                 .catch(err => {
@@ -34,7 +35,7 @@ class doodleMain extends Component {
             {
             data.list.map(row => {
                 return (
-                    <DoodleList 
+                    <AxiosList 
                     id={row.id} 
                     image={row.image} 
                     name={row.name} 
@@ -49,8 +50,18 @@ class doodleMain extends Component {
                     ) 
                 })
             }
-            <a href="/list"><h2>ㅗ</h2></a>
-            <DoodleWrite />
+             <ul>
+                <li>
+                    <Link to="/Doodle/axios">axiosExample</Link>
+                </li>
+                <li>
+                    <Link to="/Doodle/search">reduxExample</Link>
+                </li>
+                <li>
+                    <Link to="/">mainExample</Link>
+                </li>
+              </ul>
+            <AxiosWrite />
         </div>
         ); 
     

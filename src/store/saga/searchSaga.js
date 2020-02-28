@@ -6,7 +6,7 @@ function* fetchSearchSaga(action) {
         const json = {
             name: action.payload
             }
-        const { data } = yield call([axios, 'get'], '/customer', json);
+        const { data } = yield call([axios, 'get'], '/list', json);
 
     try {
         yield put(actions.searchSuccess(data));

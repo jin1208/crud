@@ -1,5 +1,5 @@
 import React from 'react';
-import DoodleDelete from './doodleDelete';
+import DoodleDelete from './axiosDelete';
 
 function doodleList(props) {
     return(

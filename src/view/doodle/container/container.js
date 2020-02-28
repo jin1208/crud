@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import { Link } from 'react-router-dom';
  
 import * as actions from '../../../store/actions';
 
@@ -41,6 +42,17 @@ class container extends React.Component {
     render() {
         return(
             <div>
+              <ul>
+                <li>
+                    <Link to="/Doodle/axios">axiosExample</Link>
+                </li>
+                <li>
+                    <Link to="/Doodle/search">reduxExample</Link>
+                </li>
+                <li>
+                    <Link to="/">mainExample</Link>
+                </li>
+              </ul>
             <WriteForm 
             handleFileChange = {this.handleFileChange}
             handleSubmit={this.handleSubmit}
