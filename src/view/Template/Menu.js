@@ -35,6 +35,7 @@ function Menu(props) {
         <ListItem className={clsx(classes.firebase, classes.item, classes.itemCategory)}>
           BIL CRUD
         </ListItem>
+        <Link to="/" >
         <ListItem className={clsx(classes.item, classes.itemCategory)}>
           <ListItemIcon className={classes.itemIcon}>
             <HomeIcon />
@@ -47,6 +48,7 @@ function Menu(props) {
             Home
           </ListItemText>
         </ListItem>
+        </ Link>
         {categories.map(({ id, children }) => (
           <React.Fragment key={id}>
             <ListItem className={classes.categoryHeader}>
