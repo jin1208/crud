@@ -1,8 +1,8 @@
-import { call, put, takeEvery } from "redux-saga/effects";
+import { put, takeEvery } from "redux-saga/effects";
 import * as actions from "../actions";
 import axios from "axios";
  
-function* fetchSaga(action) {
+function* fetchWriteSaga(action) {
     const config = {
             headers: {
             'Content-type': 'multipart/form-data; boundary="Boundary"'
@@ -14,13 +14,11 @@ function* fetchSaga(action) {
       formData.append('birthday', action.payload.birthday)
       formData.append('gender', action.payload.gender)
       formData.append('job', action.payload.job)
-        axios.post('/insert', formData, config)
+        axios.post('/list', formData, config)
                 .catch((err) => {
                     console.error("axios Error : " + err)
                 });
-
-        const { data } = yield call([axios, 'get'], '/list');
-
+        const { data } = `insert Success`;
     try {
         yield put(actions.writeSuccess(data));
     } catch (error) {
@@ -28,6 +26,6 @@ function* fetchSaga(action) {
     }
 }
 
-export default function* watcher() {
-    yield takeEvery(actions.WRITE, fetchSaga);
+export default function* watchWrite() {
+    yield takeEvery(actions.WRITE, fetchWriteSaga);
 }

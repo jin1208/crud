@@ -17,8 +17,9 @@ const categories = [
   {
     id: 'Doodle',
     children: [
-      { id: 'Container', icon: <PeopleIcon />, active: true },
-      { id: 'Axios', icon: <PeopleIcon /> },
+      // { id: 'Write', icon: <PeopleIcon />, active: true },
+      { id: 'Write', icon: <PeopleIcon /> },
+      { id: 'List', icon: <PeopleIcon /> },
       { id: 'Search', icon: <PeopleIcon /> },
       { id: 'Paperbase', icon: <PeopleIcon /> },
     ],
@@ -43,7 +44,7 @@ function Menu(props) {
               primary: classes.itemPrimary,
             }}
           >
-            Overview
+            Home
           </ListItemText>
         </ListItem>
         {categories.map(({ id, children }) => (

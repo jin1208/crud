@@ -7,17 +7,17 @@ const initState = {
  
 export const reducer = (state=initState, action) => {
   switch(action.type){
-    case actions.SEARCH:
+    case actions.LIST:
       return {
         ...state,
         payload: action.payload
       }
-    case actions.SEARCH_SUCCESS:
+    case actions.LIST_SUCCESS:
       return {
         ...state,
         data: action.data
       }
-    case actions.SEARCH_FAIL:
+    case actions.LIST_FAIL:
       return {
         ...state,
         error: action.error

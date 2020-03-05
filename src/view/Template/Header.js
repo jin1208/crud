@@ -35,7 +35,7 @@ function Header(props) {
             </Hidden>
             <Grid item lg />
             <Grid item>
-              <Link className={classes.link} href="#" variant="body2">
+              <Link className={classes.link} href="/Doodle/Paperbase" variant="body2">
                 Go to docs
               </Link>
             </Grid>
@@ -48,7 +48,8 @@ function Header(props) {
             </Grid>
             <Grid item>
               <IconButton color="inherit" className={classes.iconButtonAvatar}>
-                <Avatar src="/static/images/avatar/1.jpg" alt="My Avatar" />
+                {/* <Avatar src="/static/images/avatar/1.jpg" alt="My Avatar" /> */}
+                <Avatar alt="My Avatar" />
               </IconButton>
             </Grid>
           </Grid>

@@ -1,17 +1,16 @@
 import React, {Component} from 'react';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
-import Container from './view/doodle/container/Container';
-import AxiosContainer from './view/doodle/container/AxiosContainer';
-import SearchContainer from './view/doodle/container/SearchContainer';
+import { theme , drawerWidth , styles } from './view/styles/Main';
 import Header from './view/Template/Header';
 import Menu from './view/Template/Menu';
-import Copyright from './view/Template/Footer';
-import Templatebase from './view/Template/Paperbase';
+import Footer from './view/Template/Footer';
+import WriteContainer from './view/doodle/container/WriteContainer';
+import ListContainer from './view/doodle/container/ListContainer';
+import SearchContainer from './view/doodle/container/SearchContainer';
 import Paperbase from './view/uiExample/Paperbase';
 import Content from './view/uiExample/Content';
 
 import { ThemeProvider, withStyles } from '@material-ui/core/styles';
-import { theme , drawerWidth , styles } from './view/styles/Paperbase';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Hidden from '@material-ui/core/Hidden';
 
@@ -32,7 +31,7 @@ class App extends Component {
 
   render() {
     const { classes } = this.props;
-    
+
       return (
         <Router>
         <ThemeProvider theme={theme}>
@@ -53,16 +52,13 @@ class App extends Component {
             <main className={classes.main}>
             <switch>
             <Route exact path="/" component={Content}/>
-            <Route exact path="/main" component={Container}/>
-            <Route exact path="/Template/Menu" component={Menu}/>
-            <Route exact path="/Template/Paperbase" component={Templatebase}/>
-            <Route exact path="/Doodle/Container" component={Container}/>
+            <Route exact path="/Doodle/Write" component={WriteContainer}/>
+            <Route exact path="/Doodle/List" component={ListContainer}/>
             <Route exact path="/Doodle/Search" component={SearchContainer}/>
-            <Route exact path="/Doodle/Axios" component={AxiosContainer}/>
             <Route exact path="/Doodle/Paperbase" component={Paperbase}/>
             </switch>
             </main>
-              <footer className={classes.footer}> <Copyright /> </footer>
+              <footer className={classes.footer}> <Footer /> </footer>
             </div>            
           </div>
         </ThemeProvider>

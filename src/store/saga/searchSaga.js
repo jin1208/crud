@@ -3,11 +3,8 @@ import * as actions from "../actions";
 import axios from "axios";
  
 function* fetchSearchSaga(action) {
-        const json = {
-            name: action.payload
-            }
-        const { data } = yield call([axios, 'get'], '/list', json);
-
+        const search = action.payload;
+        const { data } = yield call([axios, 'get'], '/list/' + search);
     try {
         yield put(actions.searchSuccess(data));
     } catch (error) {
