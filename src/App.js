@@ -8,7 +8,7 @@ import WriteContainer from './view/doodle/container/WriteContainer';
 import ListContainer from './view/doodle/container/ListContainer';
 import SearchContainer from './view/doodle/container/SearchContainer';
 import Paperbase from './view/uiExample/Paperbase';
-import Content from './view/uiExample/Content';
+import Main from './view/Template/Main';
 
 import { ThemeProvider, withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -51,7 +51,7 @@ class App extends Component {
               <Header onDrawerToggle={this.handleDrawerToggle} />
             <main className={classes.main}>
             <switch>
-            <Route exact path="/" component={Content}/>
+            <Route exact path="/" component={Main}/>
             <Route exact path="/Doodle/Write" component={WriteContainer}/>
             <Route exact path="/Doodle/List" component={ListContainer}/>
             <Route exact path="/Doodle/Search" component={SearchContainer}/>
