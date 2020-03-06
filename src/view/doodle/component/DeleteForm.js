@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Button from '@material-ui/core/Button';
-import styles from '../../styles/Content';
 import * as actions from '../../../store/actions';
 
 class DeleteForm extends React.Component {
@@ -17,7 +16,7 @@ class DeleteForm extends React.Component {
 
     render() {
         return (
-            <Button variant="contained" color="secondary" className={styles.addUser} type="button"
+            <Button variant="contained" color="secondary" type="button"
                   onClick={() => {this.delete(this.props.id)}}
                   >삭제</Button>
         )

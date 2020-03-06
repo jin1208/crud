@@ -8,31 +8,32 @@ import Button from '@material-ui/core/Button';
 import InputLabel from '@material-ui/core/InputLabel';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
+import { withStyles } from '@material-ui/core/styles';
 
  function WriteForm(props) {
-  
+    const { classes } = props;
      return(
-       <Paper className = {styles.paper} >
+        <Paper className = {classes.paper} >
            <Container maxWidth="xs">
-            <form className={styles.root} onSubmit={props.handleSubmit}>
+            <form className={classes.form} onSubmit={props.handleSubmit}>
                 <TextField id="id" name="id" label="ID" variant="outlined" 
-                className={styles.searchInput} onChange={props.handleChange} />
+                className={classes.searchInput} onChange={props.handleChange} />
                 <FormHelperText id="my-helper-text">insert your Id.</FormHelperText>
 
                 <TextField id="userName" name="userName" label="UserName" variant="outlined"
-                className={styles.searchInput} onChange={props.handleChange} />
+                className={classes.searchInput} onChange={props.handleChange} />
                 <FormHelperText id="my-helper-text">insert your UserName.</FormHelperText>
 
                 <TextField id="birthday" name="birthday" label="Birthday" variant="outlined"
-                className={styles.searchInput} onChange={props.handleChange} />
+                className={classes.searchInput} onChange={props.handleChange} />
                 <FormHelperText id="my-helper-text">insert your Birthday.</FormHelperText>
 
                 <TextField id="gender" name="gender" label="Gender" variant="outlined"
-                className={styles.searchInput} onChange={props.handleChange} />
+                className={classes.searchInput} onChange={props.handleChange} />
                 <FormHelperText id="my-helper-text">gender.</FormHelperText>
 
                 <TextField id="job" name="job" label="Job" variant="outlined"
-                className={styles.searchInput} onChange={props.handleChange} />
+                className={classes.searchInput} onChange={props.handleChange} />
                 <FormHelperText id="my-helper-text">job.</FormHelperText>
 
                 <label htmlFor="file">
@@ -45,7 +46,7 @@ import SearchIcon from '@material-ui/icons/Search';
                 <InputLabel htmlFor="my-input">{props.fileName}</InputLabel>
 
                 <br /><br />
-                <Button variant="contained" color="primary" className={styles.addUser} type="submit">
+                <Button variant="contained" color="primary" className={classes.addUser} type="submit">
                     고객 추가
                 </Button>
             </form>
@@ -54,4 +55,4 @@ import SearchIcon from '@material-ui/icons/Search';
     );
 }
 
-export default WriteForm;
+export default withStyles(styles)(WriteForm);

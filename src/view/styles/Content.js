@@ -25,6 +25,11 @@ const styles = theme => ({
       margin: theme.spacing(2),
       width: 300,
     },
+    form: {
+      margin: theme.spacing(5),
+      width: 400,
+      height: 500,
+    },
     margin: {
       margin: theme.spacing(1),
     },

@@ -1,110 +1,59 @@
-import React from "react";
+import React from 'react';
 
-import DeleteForm from './DeleteForm';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Tooltip from '@material-ui/core/Tooltip';
+import IconButton from '@material-ui/core/IconButton';
+import SearchIcon from '@material-ui/icons/Search';
+import RefreshIcon from '@material-ui/icons/Refresh';
+import { withStyles } from '@material-ui/core/styles';
 
-import Paper from "@material-ui/core/Paper";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TablePagination from "@material-ui/core/TablePagination";
-import TableRow from "@material-ui/core/TableRow";
-
-const columns = [
-  { id: "id", label: "번호", minWidth: 170, align: "right" },
-  { id: "image", label: "이미지", minWidth: 170, align: "right" },
-  { id: "name", label: "이름", minWidth: 170, align: "right" },
-  { id: "birthday", label: "생년월일", minWidth: 170, align: "right" },
-  { id: "gender", label: "성별", minWidth: 170, align: "right" },
-  { id: "job", label: "직업", minWidth: 170, align: "right" },
-  { id: "settings", label: "설정", minWidth: 170, align: "right" },
-];
+import styles from '../../styles/Content';
 
 function SearchForm(props) {
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+    const { classes } = props;
 
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = event => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
-  };
-
-  return (
-    <Paper width="100%">
-      <TableContainer maxHeight="440">
-        <Table stickyHeader aria-label="sticky table">
-          <TableHead>
-            <TableRow>
-              {columns.map(column => (
-                <TableCell
-                  key={column.id}
-                  style={{ minWidth: column.minWidth }}
-                >
-                  {column.label}
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-              {/* 이미지 없을때 array 출력 */}
-                        {/* {
-                        props.list.map((list) => {
-                            return (
-                            <TableRow hover role="checkbox" tabIndex={-1} key={list.id}>
-                                {columns.map(column => {
-                                const value = list[column.id];
-                                return (
-                                    <TableCell key={column.id} align={column.align}>
-                                    {column.format && typeof value === "number"
-                                        ? column.format(value)
-                                        : value}
-                                    </TableCell>
-                                );
-                                })}
-                            </TableRow>
-                            );
-                        })
-                        } */}
-
-            {
-            props.list
-            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            .map((list) => {
-                    return (
-                <TableRow>
-                    <TableCell>{list.id}</TableCell>
-                    <TableCell><img src={list.image} alt="profile" width="70" height="70"/></TableCell>
-                    <TableCell>{list.name}</TableCell>
-                    <TableCell>{list.birthday}</TableCell>
-                    <TableCell>{list.gender}</TableCell>
-                    <TableCell>{list.job}</TableCell>
-                    <TableCell>
-                    <DeleteForm id={list.id} refresh={props.refresh} />
-                    </TableCell>
-                </TableRow>
-                        );
-                })
-            }
-
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[5, 10, 25, 50]}
-        component="div"
-        count={props.list.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onChangePage={handleChangePage}
-        onChangeRowsPerPage={handleChangeRowsPerPage}
-      />
+    return(
+    <Paper className={classes.paper}>
+    <AppBar className={classes.searchBar} position="static" color="default" elevation={0}>
+      <Toolbar>
+        <Grid container spacing={2} alignItems="center">
+          <Grid item>
+            <SearchIcon className={classes.block} color="inherit" />
+          </Grid>
+          <Grid item xs>
+            <TextField
+              name="search"
+              onChange={props.handleChange}
+              onKeyPress={props.handleKeyPress}
+              fullWidth
+              placeholder="Search by Customers userId, gender, name, or birthday"
+              InputProps={{
+                disableUnderline: true,
+                className: classes.searchInput,
+              }}
+            />
+          </Grid>
+          <Grid item>
+            <Button variant="contained" color="primary" className={classes.addUser} 
+            onClick={props.search} >
+              Search
+            </Button>
+            <Tooltip title="Reload">
+              <IconButton onClick={props.reload} >
+                <RefreshIcon className={classes.block} color="inherit" />
+              </IconButton>
+            </Tooltip>
+          </Grid>
+        </Grid>
+      </Toolbar>
+    </AppBar>
     </Paper>
   );
 }
 
-export default SearchForm;
+export default withStyles(styles)(SearchForm);
