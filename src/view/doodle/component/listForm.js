@@ -7,10 +7,12 @@ import {TableRow} from "@material-ui/core";
 import {TableCell} from "@material-ui/core";
 import TableContainer from "@material-ui/core/TableContainer";
 import TablePagination from "@material-ui/core/TablePagination";
+import { withStyles } from '@material-ui/core/styles';
 
 import DeleteForm from './DeleteForm';
 
 function ListForm(props) {
+  const { classes } = props;
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
@@ -24,9 +26,9 @@ function ListForm(props) {
   };
   
     return(
-      <Paper className={styles.root}>
+      <Paper>
           <TableContainer maxHeight="440">
-            <Table className={styles.table}>
+            <Table className={classes.table}>
               <TableHead>
               <TableRow>
                 <TableCell>번호</TableCell>
@@ -73,4 +75,4 @@ function ListForm(props) {
       </Paper>
     );
 }
-export default ListForm;
+export default withStyles(styles)(ListForm);
