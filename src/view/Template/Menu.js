@@ -10,6 +10,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import HomeIcon from '@material-ui/icons/Home';
 import PeopleIcon from '@material-ui/icons/People';
+import AccountBoxSharpIcon from '@material-ui/icons/AccountBoxSharp';
 import { Link } from 'react-router-dom';
 import styles from '../styles/Menu';
 
@@ -78,10 +79,23 @@ function Menu(props) {
                 </ListItem>
                 </Link>
             ))}
-
             <Divider className={classes.divider} />
           </React.Fragment>
         ))}
+        <Link to="/SignUp" className={classes.link}>
+        <ListItem className={clsx(classes.item)}>
+          <ListItemIcon className={classes.itemIcon}>
+          <AccountBoxSharpIcon />
+          </ListItemIcon>
+          <ListItemText
+            classes={{
+              primary: classes.itemPrimary,
+            }}
+          >
+            회원가입
+          </ListItemText>
+        </ListItem>
+        </ Link>
       </List>
     </Drawer>
   );
