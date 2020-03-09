@@ -17,7 +17,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 
-class SignUpContainer extends React.Component {
+class SignInContainer extends React.Component {
     constructor(props){
         super(props);
         this.state = {
@@ -59,7 +59,7 @@ class SignUpContainer extends React.Component {
                             <OutlinedInput
                                 id="id" placeholder="ID"
                                 onChange={this.handleChange}
-                                startAdornment={<InputAdornment position="start"> <AccountCircle /> </InputAdornment>}
+                                endAdornment={<InputAdornment position="end"> <AccountCircle /> </InputAdornment>}
                             />
                             </FormControl>
                             </TableCell>
@@ -89,62 +89,14 @@ class SignUpContainer extends React.Component {
                             </TableCell>
                         </TableRow>
                         <TableRow>
-                            <TableCell>UserName</TableCell>
-                            <TableCell>
-                            <FormControl className={classes.margin} variant="outlined">
-                            <OutlinedInput
-                                id="userName" placeholder="UserName"
-                                onChange={this.handleChange}
-                                startAdornment={<InputAdornment position="start"> <AccountCircle /> </InputAdornment>}
-                            />
-                            </FormControl>
-                            </TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell>Phone</TableCell>
-                            <TableCell>
-                            <FormControl className={classes.margin} variant="outlined">
-                            <OutlinedInput
-                                id="phone" placeholder="Phone"
-                                onChange={this.handleChange}
-                                startAdornment={<InputAdornment position="start"> <AccountCircle /> </InputAdornment>}
-                            />
-                            </FormControl>
-                            </TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell>Gender</TableCell>
-                            <TableCell>
-                            <FormControl className={classes.margin} variant="outlined">
-                            <OutlinedInput
-                                id="gender" placeholder="Gender"
-                                onChange={this.handleChange}
-                                startAdornment={<InputAdornment position="start"> <AccountCircle /> </InputAdornment>}
-                            />
-                            </FormControl>
-                            </TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell>Email</TableCell>
-                            <TableCell>
-                            <FormControl className={classes.margin} variant="outlined">
-                            <OutlinedInput
-                                id="email" placeholder="Email"
-                                onChange={this.handleChange}
-                                startAdornment={<InputAdornment position="start"> <AccountCircle /> </InputAdornment>}
-                            />
-                            </FormControl>
-                            </TableCell>
-                        </TableRow>
-                        <TableRow>
                             <FormControl className={classes.margin} variant="outlined">
                             <Button variant="contained" color="primary" className={classes.addUser} type="submit">
-                                회원가입
+                                로그인
                             </Button>
                             </FormControl>
                             <FormControl className={classes.margin} variant="outlined">
                             <Button variant="contained" color="secondary" className={classes.addUser} type="button">
-                                이전
+                                취소
                             </Button>
                             </FormControl>
                         </TableRow>
@@ -157,4 +109,4 @@ class SignUpContainer extends React.Component {
 
 }
 
-export default withStyles(styles)(SignUpContainer);
+export default withStyles(styles)(SignInContainer);

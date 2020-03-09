@@ -5,6 +5,7 @@ import Header from './view/Template/Header';
 import Menu from './view/Template/Menu';
 import Footer from './view/Template/Footer';
 import SignUpContainer from './view/signUp/SignUpContainer';
+import SignInContainer from './view/signUp/SignInContainer';
 import WriteContainer from './view/doodle/container/WriteContainer';
 import ListContainer from './view/doodle/container/ListContainer';
 import SearchContainer from './view/doodle/container/SearchContainer';
@@ -54,6 +55,7 @@ class App extends Component {
             <switch>
             <Route exact path="/" component={Main}/>
             <Route exact path="/SignUp" component={SignUpContainer}/>
+            <Route exact path="/SignIn" component={SignInContainer}/>
             <Route exact path="/Doodle/Write" component={WriteContainer}/>
             <Route exact path="/Doodle/List" component={ListContainer}/>
             <Route exact path="/Doodle/Search" component={SearchContainer}/>

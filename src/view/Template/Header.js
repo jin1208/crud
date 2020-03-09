@@ -16,102 +16,120 @@ import FormGroup from '@material-ui/core/FormGroup';
 import { withStyles } from '@material-ui/core/styles';
 import styles from '../styles/Header';
 
-function Header(props) {
-  const { classes, onDrawerToggle } = props;
-  const [auth, setAuth] = React.useState(false);
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
+// function Header(props) {
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      auth : false
+    }
+  }
 
-  const handleChange = event => {
-    setAuth(event.target.checked);
+  handleChange = (event) => {
+      this.setState({
+        auth : event.target.checked,
+      })
+    };
+  handleMenu = (event) => {
+    this.setState({
+      anchorEl : event.currentTarget,
+    })
   };
-
-  const handleMenu = event => {
-    setAnchorEl(event.currentTarget);
+  handleClose = () => {
+    this.setState({
+      anchorEl : null,
+    })
   };
-
-  const handleClose = () => {
-    setAnchorEl(null);
+  logout = (event) => {
+    this.setState({
+      auth : false,
+    })
   };
+  switch = (e) => {
+    if(!this.state.auth) {
+      console.log('login page');
+    }
+  }
+      render() {
+        const { classes, onDrawerToggle } = this.props;
+        const open = Boolean(this.state.anchorEl);
 
-  const logout = event => {
-    setAuth(false);
-  };
-
-  return (
-    <React.Fragment>
-      <AppBar color="transparent" position="sticky" elevation={0}>
-        <Toolbar>
-          <Grid container spacing={3} alignItems="center">
-            <Hidden smUp>
-              <Grid item>
-                <IconButton
-                  color="inherit"
-                  aria-label="open drawer"
-                  onClick={onDrawerToggle}
-                  className={classes.menuButton}
-                >
-                  <MenuIcon />
-                </IconButton>
-              </Grid>
-            </Hidden>
-            <Grid item lg />
-            <Grid item>
-              <Link className={classes.link} href="/Doodle/Paperbase" variant="body2">
-                Go to Example
-              </Link>
-            </Grid>
-            <Grid item>
-              <FormGroup>
-                <FormControlLabel
-                  control={<Switch checked={auth} onChange={handleChange} aria-label="login switch" />}
-                  label={auth ? 'Login' : 'Logout'}
-                />
-              </FormGroup>
-            </Grid>
-            <Grid item>
-            {auth && (
-              <div>
-              <IconButton color="inherit" className={classes.iconButtonAvatar} 
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleMenu}
-              >
-                <Avatar alt="My Avatar" />
-              </IconButton>
-                  <Menu
-                    id="menu-appbar"
-                    anchorEl={anchorEl}
-                    anchorOrigin={{
-                      vertical: 'top',
-                      horizontal: 'right',
-                    }}
-                    keepMounted
-                    transformOrigin={{
-                      vertical: 'top',
-                      horizontal: 'right',
-                    }}
-                    open={open}
-                    onClose={handleClose}
-                  >
-                <Link className={classes.link} href="/Doodle/Paperbase" variant="body2">
-                  <MenuItem onClick={handleClose} value='menu001'>UIEXAMPLE</MenuItem>
-                </Link>
-                <Link className={classes.link} href="/Doodle/Search" variant="body2">
-                  <MenuItem onClick={handleClose} value='menu002'>고객관리</MenuItem>
-                </Link>
-                <Link className={classes.link} href="/" variant="body2">
-                  <MenuItem onClick={logout} value='menu003'>로그아웃</MenuItem>
-                </Link>
-              </Menu>
-              </div>
-              )}
-            </Grid>
-          </Grid>
-        </Toolbar>
-      </AppBar>
-    </React.Fragment>
-  );
+        return (
+          <React.Fragment>
+            <AppBar color="transparent" position="sticky" elevation={0}>
+              <Toolbar>
+                <Grid container spacing={3} alignItems="center">
+                  <Hidden smUp>
+                    <Grid item>
+                      <IconButton
+                        color="inherit"
+                        aria-label="open drawer"
+                        onClick={onDrawerToggle}
+                        className={classes.menuButton}
+                      >
+                        <MenuIcon />
+                      </IconButton>
+                    </Grid>
+                  </Hidden>
+                  <Grid item lg />
+                  <Grid item>
+                    <Link className={classes.link} href="/Doodle/Paperbase" variant="body2">
+                      Go to Example
+                    </Link>
+                  </Grid>
+                  <Grid item>
+                    <FormGroup>
+                      <FormControlLabel
+                        control={<Switch checked={this.state.auth} onChange={this.handleChange} aria-label="login switch" />}
+                        label={this.state.auth ? 'Login' : 'Logout'}
+                        onClick={this.switch}
+                      />
+                    </FormGroup>
+                  </Grid>
+                  <Grid item>
+                  {this.state.auth && (
+                    <div>
+                    <IconButton color="inherit" className={classes.iconButtonAvatar} 
+                    aria-controls="menu-appbar"
+                    aria-haspopup="true"
+                    onClick={this.handleMenu}
+                    >
+                      <Avatar alt="My Avatar" />
+                    </IconButton>
+                        <Menu
+                          id="menu-appbar"
+                          anchorEl={this.state.anchorEl}
+                          anchorOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right',
+                          }}
+                          keepMounted
+                          transformOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right',
+                          }}
+                          open={open}
+                          onClose={this.handleClose}
+                        >
+                      <Link className={classes.link} href="/Doodle/Paperbase" variant="body2">
+                        <MenuItem onClick={this.handleClose} value='menu001'>UIEXAMPLE</MenuItem>
+                      </Link>
+                      <Link className={classes.link} href="/Doodle/Search" variant="body2">
+                        <MenuItem onClick={this.handleClose} value='menu002'>고객관리</MenuItem>
+                      </Link>
+                      <Link className={classes.link} href="/" variant="body2">
+                        <MenuItem onClick={this.logout} value='menu003'>로그아웃</MenuItem>
+                      </Link>
+                    </Menu>
+                    </div>
+                    )}
+                  </Grid>
+                </Grid>
+              </Toolbar>
+            </AppBar>
+          </React.Fragment>
+        );
+    }
 }
 
 Header.propTypes = {
